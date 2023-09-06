@@ -139,10 +139,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # Admin:
-# aminul
+# AfsarHossain
 # 123
 
 # User:
-# AfsarHossain
-# Afsar12345
+# TarekHossain
+# Tarek12345
 
