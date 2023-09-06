@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block body %}
+
+<div class="hero_area">
+  <div class="bg-box">
+    <img src="{% static 'images/book_cover_page.jpeg' %}" alt=""  style="width: 100%; height: 87%; ">
+  </div>
+<!-- slider section -->
+<section class="slider_section ">
+  <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="container ">
+          <div class="row">
+            <div class="col-md-7 col-lg-6 ">
+              <div class="detail-box">
+                <h1>
+                  Book Store
+                </h1>
+                <p style="color: darkorange; font-size:medium;">
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus nesciunt molestias a! Suscipit, ab. Ipsa sit nostrum doloremque saepe reprehenderit vel incidunt illum nesciunt asperiores. libero ipsam.
+                </p>
+                <!-- <div class="btn-box">
+                  <a href="" class="btn1">
+                    Order Now
+                  </a>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+      </div>
+
+  </div>
+
+</section>
+<!-- end slider section -->
+</div>
+
+
+  <!-- food section -->
+  <section class="food_section layout_padding-bottom">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+          Our Menu
+        </h2>
+      </div>
+
+   
+      
+      <div class="filters-content">
+        <div class="row grid">
+          
+	{% for item in products %}
+          <div class="col-sm-6 col-lg-4 all pizza">
+            <div class="box">
+              <div>
+                <div class="img-box">
+                  <img src="{{item.image.url}}" alt="">
+                </div>
+                <div class="detail-box">
+                  <h5>
+                    <a href="" class="text-warning  ">{{item.book_name}}</a>
+                  </h5>
+                  <p>
+                    {{item.description}}
+                  </p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          
+  {% endfor %}
+		  
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- end food section -->
+
+{% endblock %}
+

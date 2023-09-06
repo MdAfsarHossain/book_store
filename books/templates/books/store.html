@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+  <!-- food section -->
+  <section class="food_section layout_padding-bottom">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+          Our Books
+        </h2>
+      </div>
+
+      
+      <form method="GET">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Search Book</label>
+            <input type="text" class="form-control" name="searchItem">
+            <button type="submit" class="btn btn-primary mt-2">Search Item</button>
+    </form>
+    <!-- <div>Your searched for: {{searchItem}}</div> -->
+
+      <ul class="filters_menu">
+        <a href="{% url 'books' %}"><li class="active" data-filter="*">All</li></a>
+        {% for i in categories %}
+          <a href="{% url 'products_by_category' category_slug=i.slug %}"><li data-filter=".{{i.slug}}">{{i.category_name}}</li></a>
+        {% endfor %}
+      </ul>
+
+    
+      <div class="filters-content">
+        <div class="row grid">
+          
+	{% for item in foods %}
+          <div class="col-sm-6 col-lg-4 all pizza">
+            <div class="box">
+              <div>
+                <div class="img-box">
+                  <img src="{{item.image.url}}" alt="">
+                </div>
+                <div class="detail-box">
+                  <h5>
+                    <a href="{% url 'product_detail' item.category.slug  item.slug %}" class="text-warning  ">{{item.book_name}}</a>
+                  </h5>
+                  <p>
+                    {{item.description}}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+		  
+        </div>
+      </div>
+      <!-- <div class="btn-box">
+        <a href="">
+          View More
+        </a>
+      </div> -->
+    </div>
+  </section>
+
+  <!-- end food section -->
+
+
+
+{% endblock %}

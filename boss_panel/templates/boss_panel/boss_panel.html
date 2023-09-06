@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+<section class="mt-5 mb-5" style="width: 20%; height: 87%; margin: auto;">
+    <a href="{% url 'add_book' %}"><button type="button" class="btn btn-primary">Add Book</button></a>
+    <a href="{% url 'show_books' %}"><button type="button" class="btn btn-success">Show All Books</button></a>
+</section>
+{% endblock %}

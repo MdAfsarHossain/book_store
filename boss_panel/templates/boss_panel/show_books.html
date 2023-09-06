@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block body %}
+
+<h1 style="text-align: center; margin: 15px 0px;" >Welcome To All Books Page</h1>
+<div style="width: 80%; margin: auto;">
+    
+    {% if task %}
+        <table style="margin-top: 15px;" class="table table-bordered">
+            <thead>
+                <tr style="text-align: center;">
+                    <th scope="col">Title</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for item in task %}
+                    <tr>
+                        <td scope="row">{{item.book_name}}</td>
+                        <td scope="row">{{item.category}}</td>
+                        <td scope="row"><img src="{{item.image.url}}" alt="" style="width: 70%; height: 50%;"></td>
+                        <td scope="row">{{item.description}}</td>
+                        <td style="text-align: center; width: 20%;"><a href="{% url 'delete_task' id=item.id %}" class="btn btn-danger btn-sm">Delete</a> <a class="btn btn-primary btn-sm" href="{% url 'edit_book' id=item.id %}">Edit</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+
+        {% else %}
+        <h3 style="text-align: center;">No Task Available</h3>
+    {% endif %}
+</div>
+
+{% endblock %}
