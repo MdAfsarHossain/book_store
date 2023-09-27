@@ -9,11 +9,16 @@ def completed_book(request):
     return render(request, 'boss_panel/boss_panel.html')
 
 
-# Add Todo List
-def add_task(request):
+# Add Book 
+def add_book(request):
     if request.method == 'POST':
-        task = TaskForm(request.POST)
+        task = TaskForm(request.POST, request.FILES)
+        # print(task.book_name)
+        # print(task.description)
+        # print(task.image)
+        print(task)
         if task.is_valid():
+            print("Task Form")
             task.save()
             # print(task.cleaned_data)
             return redirect('show_books')
@@ -22,14 +27,14 @@ def add_task(request):
     return render(request, 'boss_panel/add_book.html', {'task': task})
 
 
-# Show Todo List
-def show_tasks(request):
+# Show Book List
+def show_books(request):
     task = Books.objects.all()
     return render(request, 'boss_panel/show_books.html', {'task': task})
 
 
-# Edit Todo List
-def edit_task(request, id):
+# Edit book
+def edit_book(request, id):
     task = Books.objects.get(pk=id)
     form = TaskForm(instance = task)
     
@@ -41,22 +46,8 @@ def edit_task(request, id):
     return render(request, 'boss_panel/edit_book.html', {'task': form})
 
 
-# Delete Todo List
-def delete_task(request, id):
+# Delete Book
+def delete_book(request, id):
     task = Books.objects.get(pk=id).delete()
     return redirect('show_books')
 
-
-# Complete Todo List
-# def completed_tasks(request, id=None):
-#     if id is None:
-#         tasks = Books.objects.all()
-#         return render(request, 'completed_tasks.html', {'task': tasks})
-#     else:
-#         tasks = Books.objects.get(pk=id)
-#         tasks.is_completed = True
-#         tasks.save()
-#         return redirect('completed_tasks_default')
-      
-      
-      

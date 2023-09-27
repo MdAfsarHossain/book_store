@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import Books
+from . models import Books, ReviewRating
 
 # Register your models here.
 # admin.site.register(Product)
@@ -9,5 +9,6 @@ class BooksAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('book_name', )}
     
 admin.site.register(Books, BooksAdmin)
+admin.site.register(ReviewRating)
 
 

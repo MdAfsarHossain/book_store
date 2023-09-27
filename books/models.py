@@ -21,4 +21,25 @@ class Books(models.Model):
         return self.book_name
     
 
+    
+
+RATING = (
+    (1, 1),
+    (2, 2),
+    (3, 3),
+    (4, 4),
+    (5, 5),
+) 
+
+    
+class ReviewRating(models.Model):
+    product = models.ForeignKey(Books, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    review = models.TextField(max_length=500, blank=True)
+    rating = models.IntegerField(choices=RATING)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.review
 
